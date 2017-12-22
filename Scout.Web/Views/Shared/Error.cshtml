@@ -1,0 +1,46 @@
+﻿@using Scout.Entities.Messages
+@using Scout.Web.ViewModels
+@model ErrorVM
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<link href="~/Content/error.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 Error</title>
+   
+</head>
+<body>
+  
+        <div class="background">
+            <div class="err">
+                <h2 style="text-align: center;">
+                    @foreach (ErrorMessageObj msg in Model.Items)
+                    {
+                        @msg.Message<br>
+                    }
+                </h2>
+            </div>
+        </div>
+    
+</body>
+</html>
+@{
+    string js = string.Empty;
+
+    if (Model.IsRedirecting)
+    {
+        js = "setTimeout(function () { window.location = '" + Model.RedirectingUrl + "'; }, " +
+            Model.RedirectingTimeout + ");";
+    }
+}
+<script>
+
+    $(function () {
+        @Html.Raw(js);
+    });
+
+</script>

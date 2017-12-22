@@ -1,0 +1,5 @@
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Core\bin\Debug\Scout.Core.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Core\bin\Debug\Scout.Core.pdb
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Core\obj\Debug\Scout.Core.csprojResolveAssemblyReference.cache
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Core\obj\Debug\Scout.Core.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Core\obj\Debug\Scout.Core.pdb

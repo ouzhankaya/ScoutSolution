@@ -1,0 +1,56 @@
+﻿@using Scout.Web.Models
+@using Scout.Entities
+@model Manager
+@{
+    ViewBag.Title = "Profil Bilgileriniz";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scout: Profile Page</title>
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/style.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="profile">
+                        <h1 class="page-header">@(Model.Name + " " + Model.Lastname)</h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="~/images/@Model.ProfileImageFileName" class="img-thumbnail" alt="" />
+                            </div>
+                            <div class="col-md-8">
+                                <ul>
+                                    <li><strong>Username:</strong>@Html.DisplayFor(model => model.Username)</li>
+                                    <li><strong>Name:</strong>@Html.DisplayFor(model => model.Name)</li>
+                                    <li><strong>Email:</strong>@Html.DisplayFor(model => model.Email)</li>
+                                    <li><strong>Age:</strong>@Html.DisplayFor(model => model.Age)</li>
+                                    <li><strong>Tel:</strong>@Html.DisplayFor(model => model.PhoneNumber)</li>
+                                    @if (CurrentSession.footballer == null)
+                                    {
+                                        <li><strong>Kalan Profil Görüntüleme Sayısı:</strong>@Html.DisplayFor(model => model.CountOfViewProfile)</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div><br><br>
+                        <div class="container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

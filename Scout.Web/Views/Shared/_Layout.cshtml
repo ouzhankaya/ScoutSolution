@@ -1,0 +1,147 @@
+﻿@using Scout.Web
+@using Scout.Entities
+@using Scout.Web.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scout</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/ekko-lightbox.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="left">
+                <img src="~/images/Logo2.PNG" class="logo" alt="" />
+            </div>
+            <div class="text-right">
+
+
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (CurrentSession.footballer == null && CurrentSession.manager == null && CurrentSession.admin != null)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-wrench"></span> Yönetim <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Create","Footballer")"><span class="fa fa-user-plus"></span> Futbolcu Ekle</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Create","Manager")"><span class="fa fa-user-plus"></span> Menajer Ekle</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Index","Footballer")"><span class="fa fa-th-list"></span> Futbolcular</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Index","Manager")"><span class="fa fa-th-list"></span> Menajerler</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown right">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <img class="img-circle" style="height:24px;" src="~/Images/@CurrentSession.admin.ProfileImageFileName">
+                                @CurrentSession.admin.Name
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Logout", "Home")"><span class="fa fa-sign-out"></span>Çıkış</a></li>
+                            </ul>
+                        </li>
+                    }
+                    </ul>
+                        <ul class="nav navbar-nav">
+                            @if (CurrentSession.footballer == null && CurrentSession.manager != null && CurrentSession.admin == null)
+                            {
+                                <li class="active"><a href="@Url.Action("ShowShare","Home")">Home</a></li>
+                                <li><a href="@Url.Action("MostLiked","Home")">En Beğenilenler</a></li>
+                                <li><a href="@Url.Action("ShowShare","Home")">En Son Paylaşımlar</a></li>
+                                <li><a href="@Url.Action("FilterSearch","Home")">Futbolcu Ara</a></li>
+                            }
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (CurrentSession.footballer != null && CurrentSession.manager == null && CurrentSession.admin == null)
+                            {
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/Home/ShowFootballerProfile" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <img class="img-circle" style="height:24px;" src="~/Images/@CurrentSession.footballer.ProfileImageFileName">
+                                        @CurrentSession.footballer.Name
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ShowFootballerProfile", "Home")"><span class="fa fa-user"></span>Profili Göster</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="@Url.Action("Logout", "Home")"><span class="fa fa-sign-out"></span>Çıkış</a></li>
+                                    </ul>
+                                </li>
+                                @*<li class="dropdown">
+                                    <a id="btnBildirim" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-globe"></i>  <span id="NotCount" class="label label-primary"></span>
+                                    </a>
+                                    <ul id="Bildirimler" class="dropdown-menu dropdown-alerts"></ul>
+                                </li>*@
+                            }
+
+
+                            @if (CurrentSession.footballer == null && CurrentSession.manager != null && CurrentSession.admin == null)
+                            {
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/Home/ManagerProfileInformations" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <img class="img-circle" style="height:24px;" src="~/Images/@CurrentSession.manager.ProfileImageFileName">
+                                        @CurrentSession.manager.Name
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Action("ManagerProfileInformations", "Home")"><span class="fa fa-edit"></span>Profili Göster</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="@Url.Action("MyLikedShares", "Share")"><span class="fa fa-heart"></span> Beğendiklerim</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="@Url.Action("EditManagerProfile", "Home")"><span class="fa fa-user"></span>Profili Düzenle</a></li>
+                                        <li><a href="@Url.Action("DeleteManagerProfile", "Home")" onclick="return confirm('Hesabınızı silmek istediğinize emin misiniz?')"><span class="fa fa-trash"></span>Profili Sil</a></li>
+                                        <li><a href="@Url.Action("Logout", "Home")"><span class="fa fa-sign-out"></span>Çıkış</a></li>
+                                    </ul>
+                                </li>
+                                @*<li class="dropdown">
+                                    <a id="btnBildirim" class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-globe"></i>  <span id="NotCount" class="label label-primary"></span>
+                                    </a>
+                                    <ul id="Bildirimler" class="dropdown-menu dropdown-alerts"></ul>
+                                </li>*@
+                            }
+
+
+                        </ul>
+                    </div><!--/.nav-collapse -->
+</div>
+    </nav>
+    @RenderBody()
+    @RenderSection("footer", required: false)
+
+    <script>
+
+    </script>
+</body>
+</html>

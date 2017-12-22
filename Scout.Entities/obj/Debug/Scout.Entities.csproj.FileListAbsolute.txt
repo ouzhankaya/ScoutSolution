@@ -1,0 +1,10 @@
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\Scout.Entities.dll.config
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\Scout.Entities.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\Scout.Entities.pdb
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\obj\Debug\Scout.Entities.dll
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\obj\Debug\Scout.Entities.pdb
+C:\Users\Oğuzhan\Documents\Visual Studio 2015\Projects\Scout\ScoutSolution\Scout.Entities\obj\Debug\Scout.Entities.csprojResolveAssemblyReference.cache

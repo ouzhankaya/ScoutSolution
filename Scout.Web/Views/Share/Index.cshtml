@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Scout.Entities.Share>
+
+@{
+    ViewBag.Title = "Paylaşımlar";
+}
+
+<div class="row">
+    <div class="col-md-8">
+       @foreach (var item in Model)
+       {
+        <div class="panel panel-default post">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a href="/Home/ByFootballer/@item.Owner.Id" class="post-avatar thumbnail"><img src="~/images/@item.Owner.ProfileImageFileName" alt="" /></a>
+                        <a href="/Home/ByFootballer/@item.Owner.Id"><div class="text-center">@item.Owner.Username</div></a>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="bubble">
+
+                            <div class="pointer">
+                                <p>@item.ShareText</p>
+                                <img src="~/images/@item.ShareImageFileName" class="img-responsive" />
+                            </div>
+                            <div class="pointer">
+                                @if (item.ShareVideoFileName != null)
+                                {
+                                    <video controls="controls" class="img-responsive">
+                                        <source src="~/Videos/@item.ShareVideoFileName" type="video/mp4" />
+                                    </video>
+                                }
+
+                            </div>
+
+                            <div class="pointer-border"></div>
+                        </div>
+                        <p class="post-actions">
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_comment" data-share-id="@item.ShareId">
+                                <span class="fa fa-comment"></span> Yorumlar
+                            </button> -
+                            <button class="btn btn-primary btn-sm" href="#"><span class="fa fa-hand-o-right"></span><b> @item.LikeCount</b> Beğeni</button>
+                        </p>
+                        <p class="text-right"><span class="fa fa-calendar"> @item.CreatedDate.ToString("dd.MM.yy HH:mm")</span></p>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       }
+
+    </div>
+</div>

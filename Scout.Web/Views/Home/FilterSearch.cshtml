@@ -1,0 +1,152 @@
+﻿@using Scout.Entities
+@model Scout.Web.Models.SearchModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="well">
+                <h3 align="center">İstediğiniz kriterlere göre futbolcu arayın</h3>
+            
+                <form class="form-group" method="post">
+                    <label for="location1" class="control-label">Ülke</label>
+                    @Html.DropDownList("CountryId", null,"Seçiniz", htmlAttributes: new{ @class = "form-control", id = "Country"})
+                    <hr />
+                    <div class="form-group">
+                        <label for="location1" class="control-label">Şehir</label>
+                        @Html.DropDownList("ProvinceId", null, "Seçiniz", htmlAttributes: new { @class = "form-control", id = "Province" })
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <label for="type1" class="control-label">Mevki</label>
+                        @Html.DropDownList("PositionId", null, "Seçiniz", htmlAttributes: new { @class = "form-control", id = "Position" })
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <label for="type1" class="control-label">Yan Mevki</label>
+                        @Html.DropDownList("OtherPositionId", null, "Seçiniz", htmlAttributes: new { @class = "form-control", id = "OtherPosition" })
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <label for="type1" class="control-label">Kullanılan Ayak</label>
+                        @Html.DropDownList("FootId", null, "Seçiniz", htmlAttributes: new { @class = "form-control", id = "Foot" })
+
+
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <label for="pricefrom" class="control-label">Min Age</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon1"></div>
+                            @Html.EditorFor(model => model.MinAge, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="priceto" class="control-label">Max Age</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon2"></div>
+                            @Html.EditorFor(model => model.MaxAge, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label for="pricefrom" class="control-label">Min Boy</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon1"></div>
+                            @Html.EditorFor(model => model.MinHeight, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="priceto" class="control-label">Max Boy</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon2"></div>
+                            @Html.EditorFor(model => model.MaxHeight, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label for="pricefrom" class="control-label">Min Kilo</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon1"></div>
+                            @Html.EditorFor(model => model.MinWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="priceto" class="control-label">Max Kilo</label>
+                        <div class="input-group">
+                            <div class="input-group-addon" id="basic-addon2"></div>
+                            @Html.EditorFor(model => model.MaxWeight, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" id="search" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-search"></span>Search
+                        </button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+        <div class="col-md-9">
+            @if ((List<Footballer>)ViewBag.futbolcular != null)
+            {
+                <div class="container">
+
+                    @foreach (Footballer f in (List<Footballer>)ViewBag.futbolcular)
+                    {
+                        <div class="col-md-9">
+                            <div class="members">
+                                <div class="row member-row">
+                                    <div class="col-md-3">
+                                        <img src="~/images/@f.ProfileImageFileName" class="img-thumbnail" alt="">
+                                        <div class="text-center">
+                                            @f.Name&nbsp;@f.Lastname
+                                            <label><a href="/Home/ByFootballer/@f.Id" class="btn btn-primary btn-block"><i class="fa fa-edit"></i> Profili Görüntüle</a></label>
+                                        </div>
+                                    </div>
+                                    <h3>Lokasyon Bilgileri</h3>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-home"></i>Ülke:@f.Country.CountryName</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-th-list"></i>Şehir:@f.Province.ProvinceName</label>
+                                    </div>
+                                    <hr />
+                                    <h3>Kişişel Futbolcu Bilgileri</h3>
+
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-user"></i>Mevki:@f.Position.PositionName</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-user"></i>Yan Mevki:@f.OtherPosition.OtherPositionName</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-user"></i>Yaş:@f.Age</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-user"></i>Boy:@f.Height</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label><i class="fa fa-user"></i>Kilo:@f.Weight</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            }
+
+        </div>
+
+    </div>
+    </div>
+
+
+

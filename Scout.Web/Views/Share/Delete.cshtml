@@ -1,0 +1,74 @@
+﻿@model Scout.Entities.Share
+
+@{
+    ViewBag.Title = "Paylaşımı Kaldır";
+}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>@ViewBag.Title</h2>
+        <h3>Silmek istediğinize emin misiniz?</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h4>Share</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ShareText)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShareText)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShareImageFileName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShareImageFileName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShareVideoFileName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShareVideoFileName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LikeCount)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-danger">
+                        <span class="fa fa-trash"></span>Delete
+                    </button>
+                    @Html.ActionLink("Listeye Geri Dön", "Index", "Footballer", null, new { @class = "btn btn-default" })
+                </div>
+
+            </div>
+        }
+    </div>
+    </div>

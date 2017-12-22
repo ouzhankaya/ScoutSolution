@@ -1,0 +1,71 @@
+﻿@model Scout.Entities.Share
+
+@{
+    ViewBag.Title = "Detaylar";
+}
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>Detaylar</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div>
+            <h4>Share</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShareText)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShareText)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShareImageFileName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShareImageFileName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShareVideoFileName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShareVideoFileName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LikeCount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LikeCount)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <p>
+                <a href="/Footballer/Edit/@Model.ShareId" class="btn btn-warning">
+                    <span class="fa fa-plus"></span> Düzenle
+                </a>
+                <a href="/Footballer/Index" class="btn btn-default">
+                    <span class="fa fa-long-arrow-left"></span> Listeye Geri Dön
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+

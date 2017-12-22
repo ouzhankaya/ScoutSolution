@@ -1,0 +1,73 @@
+﻿@using Scout.Entities
+@using Scout.Web.Models
+
+@model List<Comment>
+@{
+    Manager manager = CurrentSession.manager;
+}
+@foreach (Comment item in Model)
+{
+    <div class="media">
+        <div class="media-left">
+            <a href="/Home/ByManager/@item.Manager.Id" >
+                <img class="media-object img-thumbnail" style="height:48px" src="~/Images/@item.Manager.ProfileImageFileName" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <div>
+                <span class="col-md-10" id="comment_text_@item.CommentId" contenteditable="false">
+                    @item.CommentText
+                </span>
+                @if (manager != null && manager.Id == item.Manager.Id)
+                {
+                    <span class="col-md-2 text-right">
+                        <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this, 'edit_clicked', @item.CommentId,'#comment_text_@item.CommentId');">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs"  onclick="doComment(this, 'delete_clicked', @item.CommentId);">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </span>
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                    </div>
+                    
+                    <small class="col-md-5 text-right">
+                        <a href="/Home/ByManager/@item.Manager.Id"><span class="glyphicon glyphicon-user"></span> @item.Manager.Username</a> &nbsp;
+                        <span class="glyphicon glyphicon-time"></span> @item.ModifiedDate
+                    </small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        
+}
+
+@if (manager != null)
+            {
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" id="new_comment_text" class="form-control" placeholder="yorumunuz..">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success"  type="button" onclick="doComment(this, 'new_clicked',-1)">
+                                    <span class="glyphicon glyphicon-send"></span> Gönder
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+}
+

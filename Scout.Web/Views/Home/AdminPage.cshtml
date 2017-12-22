@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<head>
+    <style>
+       body { padding-top:20px; }
+.panel-body .btn:not(.btn-block) { width:120px;margin-bottom:10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-bookmark"></span> Hızlı Erişim
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <a href="@Url.Action("Index","Footballer")" class="btn btn-danger btn-lg text-left" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br />Futbolcular</a>
+                                <a href="@Url.Action("Create","Footballer")" class="btn btn-warning btn-lg text-left" role="button"><span class="glyphicon glyphicon-plus"></span> <br />Futbolcu Ekle</a>
+                                <a href="@Url.Action("Index","Manager")" class="btn btn-primary btn-lg text-left"  role="button"><span class="glyphicon glyphicon-list-alt"></span> <br />Menajerler</a>
+                                <a href="@Url.Action("Create","Manager")" class="btn btn-primary btn-lg text-left" role="button"><span class="glyphicon glyphicon-plus"></span> <br />Menajer Ekle</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
